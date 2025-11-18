@@ -57,7 +57,7 @@ This project is licensed under the MIT License — feel free to use and modify.
 💬 Contact
 
 For questions or collaboration:
-📧 amayhiremath18@gmail.com.com
+📧 amayhiremath18@gmail.com
 
 🔗 GitHub: @AmayH18
 
