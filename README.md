@@ -1,5 +1,4 @@
 # PromptPal-Personalized-Skin-Hair-and-Body-Wellness-
-PromptPal is a personalized skin, hair, and body wellness platform designed to help users understand and improve their overall well-being. By combining smart recommendations, user profiling, and modern UI/UX, PromptPal provides customized insights based on individual needs and lifestyle patterns.
 
 Features:
 🌿 Personalized Skin, Hair & Body Recommendations
@@ -60,7 +59,7 @@ This project is licensed under the MIT License — feel free to use and modify.
 For questions or collaboration:
 📧 amayhiremath18@gmail.com.com
 
-🔗 GitHub: @AMAYH18
+🔗 GitHub: @AmayH18
 
 
 
