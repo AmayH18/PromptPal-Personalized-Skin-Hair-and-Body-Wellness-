@@ -17,22 +17,18 @@ export default function ProfilePage() {
     }
 
     const loadProfile = async () => {
-      try {
-        const res = await API.get("/auth/profile", {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        });
+  try {
+    const res = await API.get("/api/auth/profile");
 
-        setUser(res.data);
-      } catch (err) {
-        console.error("Profile fetch failed:", err);
-        localStorage.removeItem("promptpal_token");
-        navigate("/login");
-      } finally {
-        setLoading(false);
-      }
-    };
+    setUser(res.data);
+  } catch (err) {
+    console.error("Profile fetch failed:", err);
+    setUser(null);
+  } finally {
+    setLoading(false);
+  }
+};
+
 
     loadProfile();
   }, [navigate]);
@@ -75,25 +71,38 @@ export default function ProfilePage() {
           <p><strong>Daily Routine:</strong> {user.dailyRoutine || "Not provided"}</p>
         </div>
 
-        <div className="mt-8 text-center">
-          <button
-            className="bg-red-600 text-white px-4 py-2 rounded-lg hover:bg-red-700"
-            onClick={() => {
-              localStorage.removeItem("promptpal_token");
-              localStorage.removeItem("promptpal_userId");
-              navigate("/login");
-            }}
-          >
-            Logout
-          </button>
-          <button
-  onClick={() => navigate("/edit-profile")}
-  className="bg-indigo-600 text-white px-4 py-2 rounded-lg hover:bg-indigo-700 mr-3"
->
-  Edit Profile
-</button>
+        <div className="mt-8 flex justify-center gap-4">
 
-        </div>
+  {/* Edit Profile */}
+  <button
+    onClick={() => navigate("/edit-profile")}
+    className="bg-indigo-600 text-white px-4 py-2 rounded-lg hover:bg-indigo-700"
+  >
+    Edit Profile
+  </button>
+
+  {/* Generate Advice */}
+  <button
+    onClick={() => navigate("/promptpal")}
+    className="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700"
+  >
+    Generate Advice
+  </button>
+
+  {/* Logout */}
+  <button
+    className="bg-red-600 text-white px-4 py-2 rounded-lg hover:bg-red-700"
+    onClick={() => {
+      localStorage.removeItem("promptpal_token");
+      localStorage.removeItem("promptpal_userId");
+      navigate("/login");
+    }}
+  >
+    Logout
+  </button>
+
+</div>
+
 
       </div>
     </div>

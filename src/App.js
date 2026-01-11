@@ -15,7 +15,7 @@ import ForgotPasswordPage from "./pages/ForgotPasswordPage";
 import ProtectedRoute from "./components/ProtectedRoute";
 import EditProfilePage from "./pages/EditProfilePage";
 import ChooseAdvicePage from "./pages/ChooseAdvicePage";
-
+import PromptPal from "./pages/PromptPal";
 
 
 // Helper functions
@@ -122,6 +122,8 @@ export default function App() {
     </ProtectedRoute>
   }
 />
+<Route
+ path="/promptpal" element={<PromptPal />} />
 
 
           </Routes>
@@ -129,7 +131,7 @@ export default function App() {
 
         {/* Footer */}
         <footer className="text-center py-4 text-gray-500 text-sm">
-          © {new Date().getFullYear()} PROMPTPAL — Personalized AI Wellness
+          © {new Date().getFullYear()} PROMPTPAL — Personalized Skin,Hair and Body Wellness
         </footer>
 
       </div>
