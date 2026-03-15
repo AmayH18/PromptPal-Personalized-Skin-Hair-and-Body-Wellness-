@@ -16,6 +16,8 @@ import ProtectedRoute from "./components/ProtectedRoute";
 import EditProfilePage from "./pages/EditProfilePage";
 import ChooseAdvicePage from "./pages/ChooseAdvicePage";
 import PromptPal from "./pages/PromptPal";
+import PromptPalResultPage from "./pages/PromptPalResultPage";
+
 
 
 // Helper functions
@@ -34,36 +36,39 @@ export default function App() {
 
   return (
     <Router>
-      <div className="min-h-screen bg-gray-50 text-gray-800">
+      <div className="min-h-screen bg-slate-950 text-slate-100">
         
         {/* Header */}
-        <header className="bg-white shadow-sm">
-          <div className="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
-            <Link to="/" className="font-bold text-xl text-blue-700">
+        <header className="sticky top-0 z-40 border-b border-white/10 bg-slate-950/80 backdrop-blur-xl">
+          <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-4">
+            <Link to="/" className="font-bold text-xl text-cyan-300 tracking-wide">
               PROMPTPAL
             </Link>
 
-            <nav className="space-x-4">
+            <nav className="space-x-4 text-slate-200">
               {!isAuthenticated ? (
                 <>
-                  <Link to="/signup" className="hover:underline hover:text-blue-600">
+                  <Link to="/signup" className="hover:underline hover:text-cyan-300">
                     Signup
                   </Link>
-                  <Link to="/login" className="hover:underline hover:text-blue-600">
+                  <Link to="/login" className="hover:underline hover:text-cyan-300">
                     Login
                   </Link>
                 </>
               ) : (
                 <>
-                  <Link to="/profile" className="hover:underline hover:text-blue-600">
+                  <Link to="/profile" className="hover:underline hover:text-cyan-300">
                     Profile
                   </Link>
-                  <Link to="/dashboard" className="hover:underline hover:text-blue-600">
+                  <Link to="/dashboard" className="hover:underline hover:text-cyan-300">
                     Dashboard
+                  </Link>
+                  <Link to="/choose-advice" className="hover:underline hover:text-cyan-300">
+                    Choose Advice
                   </Link>
                   <button
                     onClick={logout}
-                    className="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600"
+                    className="rounded-lg bg-gradient-to-r from-rose-500 to-red-600 px-3 py-1 text-white transition hover:from-rose-600 hover:to-red-700"
                   >
                     Logout
                   </button>
@@ -74,13 +79,13 @@ export default function App() {
         </header>
 
         {/* Main Content */}
-        <main className="max-w-5xl mx-auto p-4">
+        <main className="p-0">
           <Routes>
             {/* Landing Page */}
             <Route
               path="/"
               element={
-                <Navigate to={isAuthenticated ? "/dashboard" : "/login"} />
+                <Navigate to={isAuthenticated ? "/dashboard" : "/signup"} />
               }
             />
 
@@ -124,13 +129,22 @@ export default function App() {
 />
 <Route
  path="/promptpal" element={<PromptPal />} />
+ <Route
+  path="/promptpal/result"
+  element={
+    <ProtectedRoute>
+      <PromptPalResultPage />
+    </ProtectedRoute>
+  }
+/>
+
 
 
           </Routes>
         </main>
 
         {/* Footer */}
-        <footer className="text-center py-4 text-gray-500 text-sm">
+        <footer className="border-t border-white/10 py-4 text-center text-sm text-slate-400">
           © {new Date().getFullYear()} PROMPTPAL — Personalized Skin,Hair and Body Wellness
         </footer>
 

@@ -42,25 +42,35 @@ export default function ForgotPasswordPage() {
   };
 
   return (
-    <div className="relative min-h-screen flex items-center justify-center bg-gray-50 overflow-hidden">
+    <div className="relative min-h-screen overflow-hidden">
+      <video
+        autoPlay
+        loop
+        muted
+        playsInline
+        className="absolute inset-0 h-full w-full object-cover"
+      >
+        <source src="/background.mp4" type="video/mp4" />
+      </video>
+      <div className="absolute inset-0 bg-gradient-to-br from-cyan-900/55 via-slate-900/45 to-rose-900/55" />
 
-      {/* Center Card */}
-      <div className="relative z-10 w-full max-w-md bg-white bg-opacity-95 rounded-2xl shadow-2xl p-8 border border-gray-100">
+      <div className="relative z-10 mx-auto w-full max-w-md px-4 py-12">
+        <div className="rounded-2xl border border-white/30 bg-white/15 p-8 shadow-2xl backdrop-blur-xl">
         
-        <h2 className="text-3xl font-bold text-center text-indigo-700 mb-6">
+        <h2 className="text-3xl font-bold text-center text-cyan-200 mb-6">
           Forgot Password
         </h2>
 
         {message && (
-          <p className="text-center mb-4 text-red-500 font-medium">{message}</p>
+          <p className="text-center mb-4 text-rose-300 font-medium">{message}</p>
         )}
 
         {/* --- STEP 1: ENTER EMAIL --- */}
         {step === 1 && (
           <form onSubmit={handleSendOtp} className="space-y-4">
-            <label className="font-medium text-gray-700">Email Address</label>
+            <label className="font-medium text-white">Email Address</label>
             <input
-              className="w-full border border-gray-300 rounded-lg p-3 focus:ring-2 focus:ring-indigo-500"
+              className="w-full rounded-lg border border-white/40 bg-white/90 p-3 text-slate-900 focus:ring-2 focus:ring-cyan-500"
               type="email"
               placeholder="Enter your registered email"
               value={email}
@@ -70,7 +80,7 @@ export default function ForgotPasswordPage() {
 
             <button
               type="submit"
-              className="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-2 px-4 rounded-lg transition-all"
+              className="w-full rounded-lg bg-gradient-to-r from-cyan-500 to-blue-600 py-2 px-4 font-semibold text-white transition-all hover:from-cyan-600 hover:to-blue-700"
             >
               Send OTP
             </button>
@@ -80,9 +90,9 @@ export default function ForgotPasswordPage() {
         {/* --- STEP 2: ENTER OTP + NEW PASSWORD --- */}
         {step === 2 && (
           <form onSubmit={handleResetPassword} className="space-y-4">
-            <label className="font-medium text-gray-700">Enter OTP</label>
+            <label className="font-medium text-white">Enter OTP</label>
             <input
-              className="w-full border border-gray-300 rounded-lg p-3 focus:ring-2 focus:ring-indigo-500"
+              className="w-full rounded-lg border border-white/40 bg-white/90 p-3 text-slate-900 focus:ring-2 focus:ring-cyan-500"
               type="text"
               placeholder="Enter the 6-digit OTP"
               value={otp}
@@ -90,9 +100,9 @@ export default function ForgotPasswordPage() {
               required
             />
 
-            <label className="font-medium text-gray-700">New Password</label>
+            <label className="font-medium text-white">New Password</label>
             <input
-              className="w-full border border-gray-300 rounded-lg p-3 focus:ring-2 focus:ring-indigo-500"
+              className="w-full rounded-lg border border-white/40 bg-white/90 p-3 text-slate-900 focus:ring-2 focus:ring-cyan-500"
               type="password"
               placeholder="Enter your new password"
               value={newPassword}
@@ -102,7 +112,7 @@ export default function ForgotPasswordPage() {
 
             <button
               type="submit"
-              className="w-full bg-green-600 hover:bg-green-700 text-white font-semibold py-2 px-4 rounded-lg transition-all"
+              className="w-full rounded-lg bg-gradient-to-r from-emerald-500 to-teal-600 py-2 px-4 font-semibold text-white transition-all hover:from-emerald-600 hover:to-teal-700"
             >
               Reset Password
             </button>
@@ -112,18 +122,19 @@ export default function ForgotPasswordPage() {
         {/* --- STEP 3: SUCCESS --- */}
         {step === 3 && (
           <div className="text-center">
-            <p className="text-green-600 text-lg font-semibold mb-4">
+            <p className="text-emerald-300 text-lg font-semibold mb-4">
               Password reset successfully!
             </p>
 
             <a
               href="/login"
-              className="text-indigo-600 text-lg font-medium hover:underline"
+              className="text-cyan-200 text-lg font-medium hover:underline"
             >
               Go to Login →
             </a>
           </div>
         )}
+      </div>
       </div>
     </div>
   );

@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const API = axios.create({
-  baseURL: "http://localhost:8080",
+  baseURL: "http://localhost:8080", // 🔥 CHANGE HERE
 });
 
 API.interceptors.request.use((config) => {
@@ -11,6 +11,12 @@ API.interceptors.request.use((config) => {
   }
   return config;
 });
+
+export const getWellnessScore = (userId) =>
+  API.get(`/dashboard/score/${userId}`);
+
+export const getWellnessProgress = (userId) =>
+  API.get(`/dashboard/progress/${userId}`);
 
 export default API;
 
